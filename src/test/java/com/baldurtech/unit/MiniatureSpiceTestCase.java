@@ -24,8 +24,8 @@ public class MiniatureSpiceTestCase
         
             for(Class clazz: allTestCase)
             {
-            System.out.println("Testing: " + clazz.getName());
-            runAllTest(clazz);
+                System.out.println("Testing: " + clazz.getName());
+                runAllTest(clazz);
             }
             outputTestResult();
         }
@@ -79,8 +79,12 @@ public class MiniatureSpiceTestCase
     {
         assertEquals(false,actualResult,actualResult == false);
     }
-    public static void assertEquals(Object expectedResult,Object actualResult)
+    public static void assertEquals(Object expectedResult, Object actualResult)
     {
+        Boolean testResult = equals(expectedResult, actualResult);
+        assertEquals(expectedResult, actualResult, testResult);
+    }
+    public static Boolean equals(Object expectedResult,Object actualResult) {
         Boolean testResult =false;
         if(expectedResult == null && actualResult ==null)
         {
@@ -89,8 +93,31 @@ public class MiniatureSpiceTestCase
         {
             testResult = expectedResult.equals(actualResult);
         }
-        assertEquals(expectedResult,actualResult,testResult);
+        return testResult;
     }
+    public static void assertArrayEquals(Object[] expectedResult,Object[] actualResult)
+    {
+        Boolean testResult = false;
+        testResult = expectedResult != null;
+        testResult = testResult && expectedResult.length == actualResult.length;
+        
+        if(testResult) 
+        {
+            for(int index=0; index<expectedResult.length; index++) 
+            {
+                testResult = equals(expectedResult[index],actualResult[index]);
+                if(!testResult) 
+                {
+                    System.out.println("  Array [" + index + "] expected [" + (expectedResult[index] == null?"NULL":expectedResult[index]) + "] but [" + (actualResult[index] == null?"NULL":actualResult[index]) + "]");
+                }
+            }
+        }else
+        {
+            System.out.println(" The length of both array not equals! ");
+        }
+        assertEquals(expectedResult, actualResult, testResult);
+    }
+ 
     public static void assertEquals(Object expectedResult, Object actualResult,Boolean testSuccess)
     {
         if(! testSuccess)
