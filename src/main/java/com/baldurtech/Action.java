@@ -5,20 +5,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletContext;
 
 public abstract class Action {
-    final ServletContext servletContext;
-    final HttpServletRequest request;
-    final HttpServletResponse response;
-    
+    final ActionContext actionContext;
+   
     public Action() {
-        this(null, null, null);
+        this(null);
     }
-    public Action(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) {
-        this.servletContext = servletContext;
-        this.request = request;
-        this.response = response;
+    public Action(ActionContext actionContext) {
+        this.actionContext = actionContext;
+    }
+
+    public void setAttribute(String key, Object value) {
+        actionContext.setAttribute(key, value);
     }
     
-    public String getViewPage(String uri) {
-        return "WEB-INF/jsp/contact/show.jsp";
-    }
+    
 }
