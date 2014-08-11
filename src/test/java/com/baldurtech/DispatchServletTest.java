@@ -18,4 +18,7 @@ public class DispatchServletTest extends MiniatureSpiceTestCase {
     public void test_contact的处理方法是index() {
         assertEquals("index",dispatchServlet.getMethodNameByUri("/contact"));
     }
+    public void test_contact_slash_suffix的处理方法是index() {
+        assertEquals("index",dispatchServlet.getMethodNameByUri("/contact/"));
+    }
 }

@@ -20,11 +20,11 @@ public class DispatchServlet extends HttpServlet {
     }
     public String getMethodNameByUri(String uri) {
         String[] uriParts = uri.split("/");
-        Integer indexOfActionMethodName = 2;
-        if(uriParts.length <= uriParts.length) {
+        Integer indexOfMethodName = 2;
+        if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
-        return uriParts[indexOfActionMethodName];
+        return uriParts[indexOfMethodName];
     }
     public String capitalize(String str) {
         return str.substring(0,1).toUpperCase() + str.substring(1);
