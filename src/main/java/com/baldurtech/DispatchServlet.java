@@ -30,6 +30,9 @@ public class DispatchServlet extends HttpServlet {
         return removeMethodSuffix(uriParts[indexOfMethodName]);
     }
     
+    public String getViewPage(String uri) {
+        return "WEB-INF/jsp/contact/show.jsp";
+    }
     public String removeMethodSuffix(String str) {
         return str.replace(defaultSuffix, "");
     }
