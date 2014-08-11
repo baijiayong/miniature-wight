@@ -12,4 +12,7 @@ public class DispatchServletTest extends MiniatureSpiceTestCase {
     public void test_uri_contact_应该由ContactAction来处理() {
         assertEquals(contactActionClassName,dispatchServlet.getActionClassNameByUri("/contact"));
     }
+    public void test_contact_show的处理方法是show() {
+        assertEquals("show",dispatchServlet.getMethodNameByUri("/contact/show"));
+    }
 }
