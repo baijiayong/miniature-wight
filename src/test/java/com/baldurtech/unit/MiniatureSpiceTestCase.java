@@ -18,17 +18,17 @@ public class MiniatureSpiceTestCase
         {
            testPackage = args[0];
         }
-            Reflections reflections = new Reflections(testPackage);
-            
-            Set<Class<? extends MiniatureSpiceTestCase>> allTestCase = reflections.getSubTypesOf(MiniatureSpiceTestCase.class);
+        Reflections reflections = new Reflections(testPackage);
         
-            for(Class clazz: allTestCase)
-            {
-                System.out.println("Testing: " + clazz.getName());
-                runAllTest(clazz);
-            }
-            outputTestResult();
+        Set<Class<? extends MiniatureSpiceTestCase>> allTestCase = reflections.getSubTypesOf(MiniatureSpiceTestCase.class);
+    
+        for(Class clazz: allTestCase)
+        {
+            System.out.println("Testing: " + clazz.getName());
+            runAllTest(clazz);
         }
+        outputTestResult();
+    }
     
     public static void runAllTest(Class clazz) throws Exception
     {
@@ -117,7 +117,7 @@ public class MiniatureSpiceTestCase
         }
         assertEquals(expectedResult, actualResult, testResult);
     }
- 
+
     public static void assertEquals(Object expectedResult, Object actualResult,Boolean testSuccess)
     {
         if(! testSuccess)
