@@ -7,13 +7,13 @@ public class DispatchServletTest extends MiniatureSpiceTestCase {
     String contactActionClassName = "com.baldurtech.ContactAction";
     
     public void test_uri_contact_show_应该由ContactAction来处理() { 
-        assertEquals(contactActionClassName,dispatchServlet.getActionClassNameByUri("/contact/show"));
+        assertEquals(contactActionClassName,dispatchServlet.getActionClassNameByUri("/contact/show.jsp"));
     }
     public void test_uri_contact_应该由ContactAction来处理() {
         assertEquals(contactActionClassName,dispatchServlet.getActionClassNameByUri("/contact"));
     }
     public void test_contact_show的处理方法是show() {
-        assertEquals("show",dispatchServlet.getMethodNameByUri("/contact/show"));
+        assertEquals("show",dispatchServlet.getMethodNameByUri("/contact/show.jsp"));
     }
     public void test_contact的处理方法是index() {
         assertEquals("index",dispatchServlet.getMethodNameByUri("/contact"));

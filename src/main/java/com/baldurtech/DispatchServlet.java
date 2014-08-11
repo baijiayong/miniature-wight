@@ -11,6 +11,7 @@ public class DispatchServlet extends HttpServlet {
         resp.getWriter().println(req.getRequestURI());
     }
     public String defaultPackageName = "com.baldurtech";
+    public String methodSuffix = ".jsp";
     
     public String getActionClassNameByUri(String uri) {
         String[] uriParts = uri.split("/");
@@ -24,7 +25,7 @@ public class DispatchServlet extends HttpServlet {
         if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
-        return uriParts[indexOfMethodName];
+        return uriParts[indexOfMethodName].replace(methodSuffix,"");
     }
     public String capitalize(String str) {
         return str.substring(0,1).toUpperCase() + str.substring(1);
