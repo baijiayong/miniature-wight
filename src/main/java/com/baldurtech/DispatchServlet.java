@@ -20,7 +20,7 @@ public class DispatchServlet {
     public String getClassNameByUri(String uri) {
         String[] uriParts = splitBySlash(uri);
         Integer indexOfActionClassName = 1;
-        String actionClassName =capitalize(uriParts[indexOfActionClassName]);
+        String actionClassName =capitalize(removeMethodSuffix(uriParts[indexOfActionClassName]));
         return defaultPackageName + "." + actionClassName + "Action";
     }
     
