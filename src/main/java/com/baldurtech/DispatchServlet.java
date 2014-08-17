@@ -15,12 +15,12 @@ public class DispatchServlet {
     }
     
     public String defaultPackageName = "com.baldurtech";
-    public String methodSuffix = ".do";
+    public String defaultSuffix = ".do";
     
     public String getClassNameByUri(String uri) {
         String[] uriParts = splitBySlash(uri);
         Integer indexOfActionClassName = 1;
-        String actionClassName =capitalize(removeMethodSuffix(uriParts[indexOfActionClassName]));
+        String actionClassName =capitalize(removeDefaultSuffix(uriParts[indexOfActionClassName]));
         return defaultPackageName + "." + actionClassName + "Action";
     }
     
@@ -30,7 +30,7 @@ public class DispatchServlet {
         if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
-        return removeMethodSuffix(uriParts[indexOfMethodName]);
+        return removeDefaultSuffix(uriParts[indexOfMethodName]);
     }
     
     public String capitalize(String str) {
@@ -41,7 +41,11 @@ public class DispatchServlet {
         return uri.split("/");
     }
     
-    public String removeMethodSuffix(String str) {
-        return str.replace(methodSuffix, "");
+    public String removeDefaultSuffix(String str) {
+        return str.replace(defaultSuffix, "");
+    }
+    
+    public String getViewPage(String uri) {
+        return "WEB-INF/jsp" + uri;
     }
 }   

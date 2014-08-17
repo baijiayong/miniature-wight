@@ -22,4 +22,8 @@ public class  DispatchServletTest extends MiniatureSpiceTestCase{
     public void test_uri_contact的处理方法是index() {
         assertEquals("index", dispatchServlet.getMethodNameByUri("/contact.do"));
     }
+    
+    public void test_uri_contact_show的显示页面是jsp_contact_show() {
+        assertEquals("WEB-INF/jsp/contact/show.jsp", dispatchServlet.getViewPage("/contact/show.jsp"));
+    }
 }
