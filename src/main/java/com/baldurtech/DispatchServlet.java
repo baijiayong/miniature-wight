@@ -15,11 +15,16 @@ public class DispatchServlet {
     }
     
     public String defaultPackageName = "com.baldurtech";
+    
     public String getClassNameByUri(String uri) {
         String[] uriParts = uri.split("/");
         Integer indexOfActionClassName = 1;
         String actionClassName =capitalize(uriParts[indexOfActionClassName]);
         return defaultPackageName + "." + actionClassName + "Action";
+    }
+    
+    public String getMethodNameByUri(String uri) {
+        return null;
     }
     
     public String capitalize(String str) {
