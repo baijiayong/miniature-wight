@@ -15,6 +15,7 @@ public class DispatchServlet {
     }
     
     public String defaultPackageName = "com.baldurtech";
+    public String methodSuffix = ".do";
     
     public String getClassNameByUri(String uri) {
         String[] uriParts = splitBySlash(uri);
@@ -29,7 +30,7 @@ public class DispatchServlet {
         if(uriParts.length <= indexOfMethodName) {
             return "index";
         }
-        return uriParts[indexOfMethodName];
+        return uriParts[indexOfMethodName].replace(methodSuffix, "");
     }
     
     public String capitalize(String str) {
