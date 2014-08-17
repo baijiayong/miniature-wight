@@ -8,4 +8,10 @@ public class  DispatchServletTest extends MiniatureSpiceTestCase{
         
         assertEquals("com.baldurtech.ContactAction", dispatchServlet.getClassNameByUri("/contact/show"));
     }
+   
+    public void test_contact应该由contactAction来了处理() {
+        DispatchServlet dispatchServlet = new DispatchServlet();
+        
+        assertEquals("com.baldurtech.ContactAction", dispatchServlet.getClassNameByUri("/contact"));
+    }
 }
