@@ -17,14 +17,14 @@ public class DispatchServlet {
     public String defaultPackageName = "com.baldurtech";
     
     public String getClassNameByUri(String uri) {
-        String[] uriParts = uri.split("/");
+        String[] uriParts = splitBySlash(uri);
         Integer indexOfActionClassName = 1;
         String actionClassName =capitalize(uriParts[indexOfActionClassName]);
         return defaultPackageName + "." + actionClassName + "Action";
     }
     
     public String getMethodNameByUri(String uri) {
-        String[] uriParts = uri.split("/");
+        String[] uriParts = splitBySlash(uri);
         Integer indexOfMethodName = 2;
         if(uriParts.length <= indexOfMethodName) {
             return "index";
@@ -34,5 +34,9 @@ public class DispatchServlet {
     
     public String capitalize(String str) {
         return str.substring(0,1).toUpperCase() + str.substring(1);
+    }
+    
+    public String[] splitBySlash(String uri) {
+        return uri.split("/");
     }
 }   
